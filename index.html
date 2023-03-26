@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>myBudget</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main>
+        <div class="outer-wrapper">
+            <div class="inner-wrap">
+                <!-- fisrt section -->
+                <section class="heading">
+                    <p class="title">myBudget</p>
+                    <p class="description">Cash is King</p>
+
+                </section>
+                <!-- second section -->
+                <section class="transaction">
+
+                    <!-- forms div -->
+                    <div class="actions">
+                        <h3>Add Transactions</h3>
+
+                        <form action="" class="add">
+                            <!-- 3input fields -->
+                            <input type="text" name="source" placeholder="Source" autocomplete="off">
+                            <input type="number" name="amount" placeholder="Enter the amount" autocomplete="off">
+                            <input type="submit" value="Add">
+                        </form>
+
+                    </div>
+
+                    <div class="stats">
+                        <h3>Statistics</h3>
+                        <p class="balance">Balance:$ <span id="balance">1200</span></p>
+                        <p class="income">Income:$ <span id="income">800</span></p>
+                        <p class="expenses">Expenses:$ <span id="expenses">200</span></p>
+
+                    </div>
+
+                </section>
+
+                <!-- third section -->
+                <section class="transaction-history">
+                    <h3>Transaction History</h3>
+
+                    <div class="records">
+
+                        <div class="income">
+                            <h3>Income</h3>
+                            <ul class="income-list">
+                                <!--  -->
+                                <li data-id-="">
+                                    <!-- info -->
+                                    <p>
+                                        <span>Motor</span>
+                                        <span id="time">22/2/2023</span>
+                                    </p>
+                                    <!-- display amount -->
+                                    <span>$500</span>
+                                    <!-- delete icon from Bootstrap -->
+                                    <i class="bi bi-trash delete"></i>
+                            </ul>
+    
+                        </div>
+    
+                        <div class="expense">
+    
+                            <h3>Expenses</h3>
+                            <ul class="income-list">
+                                <!--  -->
+                                <li data-id-="">
+                                    <!-- info -->
+                                    <p>
+                                        <span>Services</span>
+                                        <span id="time">27/2/2023</span>
+                                    </p>
+                                    <!-- display amount -->
+                                    <span>$200</span>
+                                    <!-- delete icon from Bootstrap -->
+                                    <i class="bi bi-trash delete"></i>
+                            </ul>
+    
+                        </div>
+
+                    </div>
+
+                </section>
+            </div>
+        </div>
+    </main>
+    
+
+
+
+
+    <script src="script.js"></script>
+</body>
+</html>

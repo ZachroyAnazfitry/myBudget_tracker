@@ -1,0 +1,196 @@
+/* google fonts */
+@import url('https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700&display=swap" rel="stylesheet');
+/* bootstrap icons */
+@import url('https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.3/font/bootstrap-icons.min.css');
+
+:root{
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+
+/* common styles */
+*{
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
+}
+
+h3{
+    text-align: center;
+    margin-bottom: 15px;
+    text-decoration: underline solid black 3px;
+    text-transform: uppercase;
+    letter-spacing: .2rem;
+    font-size: 20px;
+}
+
+.outer-wrapper{
+    /* represent entire screen */
+    width: 100%;
+    /* based on screen size will affect when scrolling */
+    min-height: 100vh;
+    background-color: whitesmoke;
+    padding: 30px;
+}
+
+.inner-wrap{
+    max-width: 1200px;
+    margin: auto;
+}
+
+.heading{
+    margin: 10px auto 40pz auto;
+}
+
+.heading .title{
+    font-size: 30px;
+    color: black;
+    font-weight: 500;
+    text-align: center;
+}
+
+.heading .description{
+    font-size: 30px;
+    color: red;
+    font-weight: 300;
+    text-align: center;
+}
+
+.transaction{
+    /* make 2 section in a row */
+    display: flex;
+    justify-content: space-around; 
+    /* when sreen size is changed, this 2 boxes will follow */
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 30px auto;
+}
+
+.actions, .stats{
+    /* expand the size of the box */
+    flex-grow: 1;
+    background-color: goldenrod;
+    padding: 20px;
+    box-shadow: var(--box-shadow);
+    border-radius: 5px;
+    margin: 0 10px;
+}
+
+/* form classes */
+.actions .add{
+    /* align input boxes in a column */
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+}
+
+/* select all child */
+
+.actions .add input {
+    font-size: 18px;
+    /* enlarge the input boxes */
+    padding: 5px;
+    /* separate the input boxes */
+    margin: 10px; 
+}
+
+/* input button */
+.actions .add input[type="submit"]{
+    padding: 7px 15px;
+    border-radius: 5px;
+    background-color: bisque;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+/* for common elements in stats class */
+.stats p{
+    background-color: aqua;
+    /* create gap */
+    margin: 10px;
+    padding: 10px 20px;
+    font-size: 18px;
+    border-radius: 2px;
+    text-align: center;
+    box-shadow: var(--box-shadow);
+}
+
+/* individual element */
+.stats p.balance{
+    background-color: gold;
+    border-right: 10px solid yellow;
+}
+
+.stats p.income{
+    background-color: greenyellow;
+    border-right: 10px solid green;
+}
+
+.stats p.expenses{
+    background-color: rosybrown;
+    border-right: 10px solid purple;
+}
+
+.transaction-history{
+    margin: 40px 10px;
+    background-color: khaki;
+    border-radius: 10px;
+    padding: 30px 0px;
+    box-shadow: var(--box-shadow);
+}
+
+.records{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin: 20px;
+}
+
+
+.records div{
+    flex-grow: 1;
+    padding: 10px;
+}
+
+.records li{
+    /* display item in single line */
+    display: flex;
+    justify-content: space-between;
+    background-color: antiquewhite;
+    padding: 10px;
+    margin: 12px 0px;
+    min-width: 250px;
+    box-shadow: var(--box-shadow);
+}
+
+.records .income li, .records .expense li{
+    border-left: 10px solid ;
+}
+
+.records li p:first-child{
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.records i.delete{
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.records i.delete:hover{
+    color: brown;
+}
+
+.records span#time{
+    color: grey;
+    font-size: 12px;
+}
+
+.records span{
+    font-size: 18px;
+}
