@@ -78,3 +78,24 @@ form.addEventListener("submit", event =>{
     
 
 })
+
+// 7. display existing transactions via looping, when refesh page this function will run
+function getTransaction() {
+    transactions.forEach(transaction => {
+        if (transaction.amount > 0) {
+            // add income list
+            incomeList.innerHTML += generateTemplate(transaction.id,transaction.source,transaction.amount,transaction.time);
+    
+        } else {
+            // add expense list
+            expenseList.innerHTML += generateTemplate(transaction.id,transaction.source,transaction.amount,transaction.time);
+         
+        }
+
+        
+    });
+    
+}
+
+getTransaction();
+
