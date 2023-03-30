@@ -14,6 +14,12 @@ let transactions = localStorage.getItem("transactions") !== null ? JSON.parse(lo
 const incomeList = document.querySelector('ul.income-list');
 const expenseList = document.querySelector('ul.expense-list');
 
+// 10. statistics, select elements id in span above
+const balance = document.getElementById('balance');
+const income = document.getElementById('income');
+const expenses = document.getElementById('expenses');
+
+
 // 7. function for HTML templates and pass data
 function generateTemplate(id,source,amount,time){
     return `  <li data-id-="${id}">
@@ -23,7 +29,7 @@ function generateTemplate(id,source,amount,time){
             <span id="time">${time}</span>
         </p>
         <!-- display amount -->
-        $<span>${Math.abs(amount)}</span>
+        RM <span>${Math.abs(amount)}</span>
         <!-- delete icon from Bootstrap -->
         <i class="bi bi-trash delete"></i>
 
@@ -74,6 +80,9 @@ form.addEventListener("submit", event =>{
     event.preventDefault();
     // 5. use & call function
     addTransaction(form.source.value,Number(form.amount.value));
+    // 10.
+    statistics();
+
     form.reset();
     
 
@@ -97,7 +106,6 @@ function getTransaction() {
     
 }
 
-getTransaction();
 
 // 9. create function to delete
 function deleteTransaction(id) {
@@ -125,6 +133,10 @@ incomeList.addEventListener("click", event=>{
         event.target.parentElement.remove();
         // 9. call function to delete
         deleteTransaction(Number(event.target.parentElement.dataset.id));  // trace transaction id as Number data type
+
+        // 10.
+        statistics();
+
     }
 })
 
@@ -135,7 +147,49 @@ expenseList.addEventListener("click", event=>{
         event.target.parentElement.remove();
         deleteTransaction(Number(event.target.parentElement.dataset.id));
 
+         // 10.
+         statistics();
     }
 })
 
+// 10. statistics, select elements id in span above
+function statistics() {
+    // calculate all incomes for positive number > 0
+    // get latest list of incomes
+    const updatedIncomes = transactions
+                                .filter(transaction => transaction.amount > 0)  //filter only positive values
+                                .reduce((total,transaction) => total += transaction.amount,0)  // arguments(callback function)
+ 
+    // console.log(updatedIncomes);  // check
+
+    // get latest list of incomes
+    const updatedExpense = transactions
+                                    .filter(transaction =>transaction.amount < 0)
+                                    .reduce((total,transaction) => total += Math.abs(transaction.amount),0)  // remove negative using abs
+    
+    // console.log(updatedExpense);  // check
+
+    // display values in html elements
+    income.textContent = updatedIncomes;
+    expenses.textContent = updatedExpense;
+
+    // for balance
+    updatedBalance = updatedIncomes - updatedExpense;
+    balance.textContent = updatedBalance;
+
+
+
+}
+
+// call the function after refresh,
+//  to solve issues on avoiding refresh page to get updated values, put this function inside addeventlistener fo addition,deletion and creating page
+// statistics();
+
+// 11. compile/bundle calling function
+function init() {
+    statistics();
+    getTransaction();
+}
+
+init();
 
