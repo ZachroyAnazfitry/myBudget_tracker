@@ -78,8 +78,15 @@ function addTransaction(source, amount) {
 // add event listener and print event into console
 form.addEventListener("submit", event =>{
     event.preventDefault();
+
+    // 12. validation, trim - remove white spaces
+    if (form.source.value.trim() === "" || form.amount.value === ""){
+        return alert("Please enter the required inputs");
+    }
     // 5. use & call function
-    addTransaction(form.source.value,Number(form.amount.value));
+    addTransaction(form.source.value.trim(),Number(form.amount.value));
+
+
     // 10.
     statistics();
 
@@ -192,4 +199,6 @@ function init() {
 }
 
 init();
+
+// 12. validation inside addeventlistener
 
