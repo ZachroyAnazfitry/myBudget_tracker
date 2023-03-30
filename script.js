@@ -73,7 +73,7 @@ function addTransaction(source, amount) {
 form.addEventListener("submit", event =>{
     event.preventDefault();
     // 5. use & call function
-    addTransaction(form.source.value,form.amount.value);
+    addTransaction(form.source.value,Number(form.amount.value));
     form.reset();
     
 
@@ -98,4 +98,44 @@ function getTransaction() {
 }
 
 getTransaction();
+
+// 9. create function to delete
+function deleteTransaction(id) {
+    // trace transaction id
+    // console.log(id); // check/debug in Console
+
+    // filter and select specific id, overwrite transactions
+    transactions = transactions.filter(transaction =>{
+        console.log(transaction.id,id);  // check/debug 
+        return transaction.id !== id;  // compare selected id with others, return ture conditions
+    });
+
+    // update storage for the list of transactions
+    localStorage.setItem("transactions", JSON.stringify(transactions));
+}
+
+// 8. delete transaction using event listeners
+// console delete class for delete icon
+incomeList.addEventListener("click", event=>{
+    if(event.target.classList.contains("delete")){
+        
+        // console.log(event.target);  //check in Console
+
+        // select i tag
+        event.target.parentElement.remove();
+        // 9. call function to delete
+        deleteTransaction(Number(event.target.parentElement.dataset.id));  // trace transaction id as Number data type
+    }
+})
+
+// for expenses
+expenseList.addEventListener("click", event=>{
+    if(event.target.classList.contains("delete")){
+        // console.log(event.target);
+        event.target.parentElement.remove();
+        deleteTransaction(Number(event.target.parentElement.dataset.id));
+
+    }
+})
+
 
